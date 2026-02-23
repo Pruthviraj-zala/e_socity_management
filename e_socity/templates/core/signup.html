@@ -1,5 +1,96 @@
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Signup</button>
-</form>
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - eSociety Management{% endblock %}
+
+{% block content %}
+<div class="signup-container">
+    <div class="signup-info">
+        <h2>Join Our Community</h2>
+        <p>Be part of a thriving community dedicated to excellence and collaboration. Manage your society more effectively with our comprehensive platform.</p>
+        
+        <ul class="features-list">
+            <li>Easy event management and scheduling</li>
+            <li>Member engagement and communication tools</li>
+            <li>Real-time notifications and updates</li>
+            <li>Secure data management</li>
+            <li>Community building features</li>
+            <li>Analytics and reporting</li>
+        </ul>
+    </div>
+    
+    <div class="signup-form-container">
+        <h3>Create Your Account</h3>
+        <form method="post">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+                <div class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email Address</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="errorlist">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.role.id_for_label }}">Your Role</label>
+                {{ form.role }}
+                {% if form.role.errors %}
+                    <div class="errorlist">
+                        {% for error in form.role.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="errorlist">
+                        {% for error in form.password1.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if form.password1.help_text %}
+                    <small class="helptext">{{ form.password1.help_text|safe }}</small>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="errorlist">
+                        {% for error in form.password2.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if form.password2.help_text %}
+                    <small class="helptext">{{ form.password2.help_text|safe }}</small>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="btn-submit">Create Account</button>
+            
+            <div class="form-footer">
+                Already have an account? <a href="/login">Sign In</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
