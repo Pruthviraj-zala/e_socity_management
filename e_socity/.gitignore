@@ -1,16 +1,14 @@
-# Environments
+# Virtual Environment
 .venv/
-env/
 venv/
-ENV/
+env/
+Include/
+Lib/
+Scripts/
 
 # Database
 *.sqlite3
 
 # Python cache
 __pycache__/
-*.py[cod]
-
-# OS files
-.DS_Store
-Thumbs.db
+*.pyc
