@@ -6,10 +6,9 @@ from django.core.exceptions import ValidationError
 class User(AbstractUser):
     """Custom User model for e-society management system"""
     ROLE_CHOICES = [
-        ('ADMIN', 'Administrator'),
+        ('ADMIN', 'Admin'),
         ('RESIDENT', 'Resident'),
-        ('VISITOR', 'Visitor'),
-        ('STAFF', 'Staff'),
+        ('GUARD', 'Guard'),
     ]
     
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='RESIDENT')
