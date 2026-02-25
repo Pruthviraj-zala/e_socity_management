@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}Guard Dashboard - eSociety Management{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Guard Dashboard</h1>
+        <p class="welcome-text">Welcome, <strong>{{ request.user.email }}</strong></p>
+    </div>
+    
+    <div class="dashboard-grid">
+        <!-- Visitors Card -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>🚗 Visitors</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-stat">Today: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">Log Visitor</a>
+            </div>
+        </div>
+        
+        <!-- Security Alerts Card -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>🚨 Alerts</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-stat">Active: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Alerts</a>
+            </div>
+        </div>
+        
+        <!-- Announcements Card -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>📢 Announcements</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-stat">Latest: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Updates</a>
+            </div>
+        </div>
+        
+        <!-- Duties Card -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h3>✓ Duties</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-stat">Pending: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Duties</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.dashboard-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.dashboard-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-text {
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: #f97316;
+}
+
+.card-header h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-stat {
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f97316;
+}
+
+.btn-link {
+    display: inline-block;
+    color: #f97316;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid #f97316;
+    border-radius: 4px;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-link:hover {
+    background: #f97316;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 20px;
+    }
+
+    .card-header h3 {
+        font-size: 16px;
+    }
+}
+</style>
+{% endblock %}

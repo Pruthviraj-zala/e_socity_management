@@ -11,11 +11,15 @@ class User(AbstractUser):
         ('GUARD', 'Guard'),
     ]
     
+    email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='RESIDENT')
     phone = models.CharField(max_length=15, blank=True, null=True)
     profile_image = models.ImageField(upload_to='profiles/', blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     is_active_resident = models.BooleanField(default=True)
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
     
     class Meta:
         ordering = ['-date_joined']
