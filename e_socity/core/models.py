@@ -13,7 +13,7 @@ class User(AbstractUser):
     
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='RESIDENT')
-    phone = models.CharField(max_length=15, blank=True, null=True)
+    phone = models.CharField(max_length=15, blank=False, null=False, default='')
     profile_image = models.ImageField(upload_to='profiles/', blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
     is_active_resident = models.BooleanField(default=True)

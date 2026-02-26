@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import UserSignupForm, UserLoginForm
 
 # Create your views here.
@@ -59,3 +59,8 @@ def userLoginView(request):
     form = UserLoginForm()
   
   return render(request, 'core/login.html', {'form': form})
+
+def userLogoutView(request):
+    """Simple logout view that handles both GET and POST"""
+    logout(request)
+    return redirect('login')

@@ -1,0 +1,59 @@
+{% load static %}
+<nav class="navbar resident-navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">
+            <a href="{% url 'resident_dashboard' %}">
+                <span class="logo-icon">🏠</span>
+                <span class="logo-text">eSociety - Resident</span>
+            </a>
+        </div>
+        
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="{% url 'resident_dashboard' %}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">My Complaints</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Events</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Community</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link nav-link-logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    });
+</script>

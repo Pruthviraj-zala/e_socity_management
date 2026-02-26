@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .decorators import role_required
 # Create your views here.
-@login_required(login_url="login") #check in core.urls.py login name should exist..
+#check in core.urls.py login name should exist..
+@role_required(allowed_roles=['ADMIN'])
 def adminDashboardView(request):
-    return render(request,"socity/admin_dashboard.html")
+    return render(request,"socity/admin/admin_dashboard.html")
 
-@login_required(login_url="login")
+@role_required(allowed_roles=['RESIDENT'])
 def residentDashboardView(request):
-    return render(request,"socity/resident_dashboard.html")
+    return render(request,"socity/resident/resident_dashboard.html")
 
-@login_required(login_url="login")
+@role_required(allowed_roles=['GUARD'])
 def guardDashboardView(request):
-    return render(request,"socity/guard_dashboard.html")
+    return render(request,"socity/guard/guard_dashboard.html")

@@ -9,8 +9,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    {% include 'navbar.html' %}
     
+    {% if request.user.is_authenticated %}
+        {% if request.user.role == 'ADMIN' %}
+            {% include 'socity/admin/admin_navbar.html' %}
+        {% elif request.user.role == 'GUARD' %}
+            {% include 'socity/guard/guard_navbar.html' %}
+        {% elif request.user.role == 'RESIDENT' %}
+            {% include 'socity/resident/resident_navbar.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'navbar.html' %}
+    {% endif %}
+
     <div class="content">
         {% block content %}{% endblock %}
     </div>

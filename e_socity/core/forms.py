@@ -3,6 +3,24 @@ from .models import User
 from django import forms
 
 class UserSignupForm(UserCreationForm):
+    first_name = forms.CharField(
+        max_length=30,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your first name'
+        })
+    )
+    
+    last_name = forms.CharField(
+        max_length=150,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your last name'
+        })
+    )
+    
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
@@ -11,9 +29,18 @@ class UserSignupForm(UserCreationForm):
         })
     )
     
+    phone = forms.CharField(
+        max_length=15,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your mobile number'
+        })
+    )
+    
     class Meta:
         model = User
-        fields = ['email', 'role', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'phone', 'role', 'password1', 'password2']
         widgets = {
             'role': forms.Select(attrs={
                 'class': 'form-control',

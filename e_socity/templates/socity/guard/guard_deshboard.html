@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
+{{request.user.email}}
+{{request.user.role}}
 
-{% block title %}Admin Dashboard - eSociety Management{% endblock %}
+{% block title %}Guard Dashboard - eSociety Management{% endblock %}
 
 {% block content %}
 <div class="dashboard-container">
     <div class="dashboard-header">
-        <h1>Admin Dashboard</h1>
+        <h1>Guard Dashboard</h1>
         <p class="welcome-text">Welcome, <strong>{{ request.user.email }}</strong></p>
     </div>
     
     <div class="dashboard-grid">
-        <!-- Users Card -->
+        <!-- Visitors Card -->
         <div class="dashboard-card">
             <div class="card-header">
-                <h3>👥 Users</h3>
+                <h3>🚗 Visitors</h3>
             </div>
             <div class="card-body">
-                <p class="card-stat">Total: <span class="stat-number">0</span></p>
-                <a href="#" class="btn-link">Manage Users</a>
+                <p class="card-stat">Today: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">Log Visitor</a>
             </div>
         </div>
         
-        <!-- Events Card -->
+        <!-- Security Alerts Card -->
         <div class="dashboard-card">
             <div class="card-header">
-                <h3>📅 Events</h3>
+                <h3>🚨 Alerts</h3>
             </div>
             <div class="card-body">
-                <p class="card-stat">Upcoming: <span class="stat-number">0</span></p>
-                <a href="#" class="btn-link">Create Event</a>
+                <p class="card-stat">Active: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Alerts</a>
             </div>
         </div>
         
@@ -38,19 +40,19 @@
                 <h3>📢 Announcements</h3>
             </div>
             <div class="card-body">
-                <p class="card-stat">Total: <span class="stat-number">0</span></p>
-                <a href="#" class="btn-link">Create Announcement</a>
+                <p class="card-stat">Latest: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Updates</a>
             </div>
         </div>
         
-        <!-- Reports Card -->
+        <!-- Duties Card -->
         <div class="dashboard-card">
             <div class="card-header">
-                <h3>📊 Reports</h3>
+                <h3>✓ Duties</h3>
             </div>
             <div class="card-body">
-                <p class="card-stat">Generated: <span class="stat-number">0</span></p>
-                <a href="#" class="btn-link">View Reports</a>
+                <p class="card-stat">Pending: <span class="stat-number">0</span></p>
+                <a href="#" class="btn-link">View Duties</a>
             </div>
         </div>
     </div>
@@ -66,7 +68,7 @@
 .dashboard-header h1 {
     font-size: 32px;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #f97316, #ea580c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -95,7 +97,7 @@
 .dashboard-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
+    border-color: #f97316;
 }
 
 .card-header h3 {
@@ -119,24 +121,24 @@
 .stat-number {
     font-size: 24px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: #f97316;
 }
 
 .btn-link {
     display: inline-block;
-    color: var(--primary-color);
+    color: #f97316;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     padding: 8px 12px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid #f97316;
     border-radius: 4px;
     transition: var(--transition);
     text-align: center;
 }
 
 .btn-link:hover {
-    background: var(--primary-color);
+    background: #f97316;
     color: white;
 }
 
